@@ -12,7 +12,7 @@ const AppRouter = () => {
     <Router>
       <Route exact path='/' component={Home} />
       <Route path='/countries' component={Countries} />
-      <Route path='/country/:code' component={Home} />
+      <Route path='/country/:code' component={Country} />
     </Router>
   );
 }
