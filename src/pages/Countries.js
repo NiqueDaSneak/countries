@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
+
 import  { ApolloClient, gql } from 'apollo-boost';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
@@ -25,6 +27,7 @@ const Countries = ( props ) => {
 				{
 					countries {
 						name
+						code
 						languages{
 							name
 							native
@@ -40,7 +43,7 @@ const Countries = ( props ) => {
 		<ul>
 			{
 				countries.map( country => (
-					<>
+					<Link to={`country/${country.code}`} >
 						<li key={country.name}>{country.name}</li>
 						<ul>
 							{country.languages.map( lang => (
@@ -52,7 +55,7 @@ const Countries = ( props ) => {
 								</>
 							))}
 						</ul>
-					</>
+					</Link>
 				))
 			}
 		</ul>
